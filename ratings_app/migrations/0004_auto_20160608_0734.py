@@ -14,13 +14,18 @@ def rating_stat(apps, schema_editor):
 
     with open("u.data") as outfile:
         rating = csv.DictReader(outfile, fieldnames=["user_id", "item_id",
-                                "rating", "timestamp"])
+                                "rating", "timestamp"], delimiter="\t")
 
-    for row in rating:
-        user_id = Rater.objects.get(user_id=row['user_id'])
-        item_id = Movie.objects.get(item_id=row['movie_id'])
-        rating = int(row['rating'])
-        timestamp = int(row['timestamp'])
+        for row in rating:
+            print(row)
+            user_id = Rater.objects.get(user_id=row['user_id'])
+            item_id = Movie.objects.get(movie_id=int(row['item_id']))
+            rating = int(row['rating'])
+            timestamp = int(row['timestamp'])
+
+            def __str__(self):
+                return str(self.rating)
+
 
 
 class Migration(migrations.Migration):

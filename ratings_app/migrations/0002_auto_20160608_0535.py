@@ -18,6 +18,9 @@ def rater_stat(apps, schema_editor):
             Rater.objects.create(user_id=int(row['user_id']), age=int(row['age']),
                                  gender=row['gender'], occupation=row['occupation'], zip_code=row['zip_code'])
 
+            def __str__(self):
+                return str(self.user_id)
+
 
 class Migration(migrations.Migration):
 

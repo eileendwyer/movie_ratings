@@ -17,7 +17,7 @@ def movie_stat(apps, schema_editor):
                                                     "film_noir", "horror", "musical", "mystery", "romance", "sci_fi",
                                                     "thriller", "war", "western"], delimiter="|")
         for row in movie:
-            Movie.objects.create(movie_id=int(row["movie_id"]), title=row["title"],
+            Movie.objects.create(movie_id=int(row['movie_id']), title=row["title"],
                                  release_date=row["release_date"], video_release=row["video_release"],
                                  imdb_url=row["imdb_url"], unknown=int(row["unknown"]), action=int(row["action"]),
                                  adventure=int(row["adventure"]), animation=int(row["animation"]),
@@ -27,6 +27,9 @@ def movie_stat(apps, schema_editor):
                                  horror=int(row["horror"]), musical=int(row["musical"]), mystery=int(row["mystery"]),
                                  romance=int(row["romance"]), sci_fi=int(row["sci_fi"]), thriller=int(row["thriller"]),
                                  war=int(row["war"]), western=int(row["western"]))
+
+            def __str__(self):
+                return str(self.title)
 
 
 class Migration(migrations.Migration):
